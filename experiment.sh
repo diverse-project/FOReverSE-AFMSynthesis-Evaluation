@@ -7,8 +7,8 @@ export http_proxy=http://proxy:3128/ && export https_proxy=https://proxy:3128/
 #cp /home/gbecan/afm-synthesis/
 
 # Perform experiment
-scala -classpath "lib/*" afmsynthesis_2.10-0.1.jar \
-/home/gbecan/afm-synthesis/output/synthesized/ 2 3 4 true
+scala -classpath "jars/lib-afmsynthesis/*" jars/afmsynthesis_2.10-0.1.jar \
+results 2 3 4 true
 
 # Save results
 
