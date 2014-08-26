@@ -15,12 +15,12 @@ export PATH=$PATH:/usr/local/scala/bin
 export http_proxy=http://proxy:3128/ && export https_proxy=https://proxy:3128/
 
 # Copy files for the experiment in /tmp/afm_experiment
-EXPERIMENT_DIR=/home/gbecan/afmsynthesis/FOReverSE-AFMSynthesis-Evaluation
+EXPERIMENT_DIR=/home/gbecan/afm-synthesis/FOReverSE-AFMSynthesis-Evaluation
 TMP_DIR=/tmp/afm_experiment
-RESULTS_DIR=/home/gbecan/afmsynthesis/results
+RESULTS_DIR=/home/gbecan/afm-synthesis/results
 
 mkdir $TMP_DIR
-cp -r $EXPERIMENT_DIR/* $TMP_DIR
+cp -rf $EXPERIMENT_DIR/* $TMP_DIR
 cd $TMP_DIR
 
 # Perform experiment
@@ -31,4 +31,5 @@ cd $TMP_DIR
 cp -r $TMP_DIR/results/* $RESULTS_DIR
 
 # Clean /tmp
-rm -r $TMP_DIR
+rm -rf $TMP_DIR
+
