@@ -28,8 +28,9 @@ cd $TMP_DIR
 for i in $(seq 1 $7); do 
 	echo "Synthesis #$i"; 
 	./synthesis.sh $1 $2 $3 $4 $5
-	./configuration_semantics.sh $6
 done
+
+./configuration_semantics.sh $6
 
 # Save results
 cp -r $TMP_DIR/results/* $RESULTS_DIR
