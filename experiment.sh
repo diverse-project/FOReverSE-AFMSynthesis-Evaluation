@@ -2,13 +2,13 @@
 
 
 # PARAMS : 
-# - number of features (root not included)
-# - number of configurations
-# - maximum size of domain
-# - enable or group computation
-# - or group computation timeout
-## - timeout for product generation
-## - how many synthesis are performed
+# - variable parameter
+# - value for fixed parameter 1
+# - value for fixed parameter 2
+# - enable or group computation?
+# - timeout or group computation (will be ignored if or group computation is disabled)
+# - number of iterations
+# - values for the variable parameter
 
 # Init environment
 export PATH=$PATH:/usr/local/sicstus4.3.0/bin/
@@ -21,22 +21,34 @@ TMP_DIR=/tmp/afm_experiment
 RESULTS_DIR=/home/gbecan/afm-synthesis/results
 LOG=/home/gbecan/afm-synthesis/results/log.txt
 
-echo "" > $LOG
 
 mkdir $TMP_DIR
 cp -rf $EXPERIMENT_DIR/* $TMP_DIR
 cd $TMP_DIR
 
 # Perform experiment
-#for i in $(seq 1 $7); do 
-for i in 5 10 20 50 100 200 500 1000 #2000 5000 10000
-do 
-	echo "Synthesis $i" >> $LOG
-	./synthesis.sh $i $2 $3 $4 $5 >> $LOG
 
-	# Save results
-	cp -r $TMP_DIR/results/* $RESULTS_DIR >> $LOG
-	rm -rf $TMP_DIR/results/* >> $LOG
+for v in ${@:7}
+do 
+	for i in $(seq 1 $6); do 
+		echo "Synthesis $v - $i"
+		if [$1 -eq "f"]; then
+			./synthesis.sh $v $2 $3 $4 $5
+		fi
+
+		if [$1 -eq "c"]; then
+			./synthesis.sh $2 $v $3 $4 $5
+		fi
+
+		if [$1 -eq "d"]; then
+			./synthesis.sh $2 $3 $v $4 $5
+		fi
+	
+		# Save results
+		cp -r $TMP_DIR/results/* $RESULTS_DIR
+		rm -rf $TMP_DIR/results/*
+	done
+
 done
 
 # Clean /tmp
