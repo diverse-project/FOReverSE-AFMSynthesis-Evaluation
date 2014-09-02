@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # PARAMS : 
-# - timeout
+# - max number of configurations
 # - directories
 
 # Init environment

@@ -14,7 +14,7 @@ plot(scalF$"#variables", scalF$"Synthesis", xlab="Number of variables", ylab="Sq
 
 # Scalability over configurations
 scalC <- results[results$"#variables" == 10 & results$"max domain size" == 10 & results$"enable or groups" == 'false',]
-scalC <- scalC[,c("#configurations", "Synthesis")]
+scalC <- scalC[,c("#configurations", "Synthesis", "Sicstus")]
 scalC <- data.frame(scalC[1], lapply(scalC[2], function(x) (x/1000)), check.names = FALSE)
 plot(scalC$"#configurations", scalC$"Synthesis", xlab="Number of configurations", ylab="Time (s)", cex=0.8, pch=18)
 
