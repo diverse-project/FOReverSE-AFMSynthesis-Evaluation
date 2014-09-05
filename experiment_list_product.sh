@@ -19,7 +19,7 @@ mkdir $TMP_DIR
 cp -rf $EXPERIMENT_DIR/* $TMP_DIR
 cd $TMP_DIR
 
-ls -d $2/* | grep Random_20_ | xargs -P 8 -n 10 ./list_products.sh $1
+ls -d $2/* | grep true | xargs -P 8 -n 10 ./list_products.sh $1
 
 # Clean /tmp
 rm -rf $TMP_DIR
