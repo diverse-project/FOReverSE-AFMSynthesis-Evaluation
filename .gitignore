@@ -18,3 +18,7 @@ project/plugins/project/
 
 *~
 .Rproj.user
+
+*.pdf
+.RData
+.Rhistory
