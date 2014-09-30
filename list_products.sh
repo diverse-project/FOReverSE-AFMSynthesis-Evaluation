@@ -11,7 +11,7 @@ do
     dir=${dir%*/}
 	echo $dir	
 	# Generate products
-	java -Xmx16g -jar jars/MatrixGenerator.jar $dir $1
+	java -Xmx12g -jar jars/MatrixGenerator.jar $dir $1
 
 done
 

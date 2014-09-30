@@ -18,7 +18,7 @@ export http_proxy=http://proxy:3128/ && export https_proxy=https://proxy:3128/
 # Copy files for the experiment in /tmp/afm_experiment
 EXPERIMENT_DIR=/home/gbecan/afm-synthesis/FOReverSE-AFMSynthesis-Evaluation
 TMP_DIR=/tmp/afm_experiment
-RESULTS_DIR=/data/gbecan_690668/afm-synthesis/results
+RESULTS_DIR=/home/gbecan/afm-synthesis/results
 LOG=/home/gbecan/afm-synthesis/results/log.txt
 
 
