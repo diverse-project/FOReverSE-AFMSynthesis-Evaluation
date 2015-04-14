@@ -9,5 +9,5 @@
 # - root name
 
 scala -J-Xmx12g -classpath "jars/lib-afmsynthesis/*:jars/afmsynthesis_2.11-0.1.jar" \
-foreverse.afmsynthesis.AFMSynthesis $@
+foreverse.afmsynthesis.AFMSynthesis "$@"
 

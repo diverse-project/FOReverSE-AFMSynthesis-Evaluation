@@ -27,10 +27,14 @@ cd $TMP_DIR
 
 # Perform experiment
 
-for filename in $TMP_DIR/dataset
+for filename in $TMP_DIR/dataset/*
 do
 	echo $filename
-	./simple_synthesis $filename $RESULTS_DIR $@
+	basefilename=$(basename "$filename")
+	#extension="${basefilename##*.}"
+	outdir="${basefilename%.*}"
+
+	./simple_synthesis.sh "$filename" "$RESULTS_DIR/$outdir" $@
 
 	# Save results
 	rm -f $TMP_DIR/results/*/sicstus_output.txt
