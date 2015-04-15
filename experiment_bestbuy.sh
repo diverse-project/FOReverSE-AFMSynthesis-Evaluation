@@ -34,7 +34,7 @@ do
 	#extension="${basefilename##*.}"
 	outdir="${basefilename%.*}"
 
-	./simple_synthesis.sh "$filename" "$RESULTS_DIR/$outdir" $@
+	./simple_synthesis.sh "$filename" "$TMP_DIR/results/$outdir" $@
 
 	# Save results
 	rm -f $TMP_DIR/results/*/sicstus_output.txt

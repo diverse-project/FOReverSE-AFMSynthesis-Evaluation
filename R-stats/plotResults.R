@@ -1,6 +1,6 @@
 source("utils.R")
 
-results <- readCSV("", "results_optimized.csv")
+results <- readCSV("", "results_v2.csv")
 
 count <- split(results, list(results$"#variables", results$"#configurations", results$"max domain size", results$"enable or groups"), drop=TRUE)
 count <- lapply(count, function(x) nrow(x))
@@ -18,21 +18,21 @@ print(summary(results$"#edges in Mutex graph"))
 #### RQ1 ####
 
 # Scalability over features
-print("Scalability w.r.t features")
-scalF <- results[results$"#configurations" == 1000 & results$"max domain size" == 10 & results$"enable or groups" == 'false',]
-scalF$"Synthesis_plot" <-(scalF$"Synthesis"/1000)**(1/2)
-plot(scalF$"#variables", scalF$"Synthesis_plot", xlab="Number of variables", ylab=expression(paste("Square root of time (", s**(1/2), ")")), cex=0.8, pch=18, xaxt="n")
-axis(1, at = c(5, 50, 100, 200, 500, 1000, 2000), las=2)
-meanScalF <- aggregate(scalF$"Synthesis_plot", by=list(scalF$"#variables"), FUN=mean)
-points(meanScalF$"Group.1", meanScalF$"x", pch=21, col="red", bg="red")
+#print("Scalability w.r.t features")
+#scalF <- results[results$"#configurations" == 1000 & results$"max domain size" == 10 & results$"enable or groups" == 'false',]
+#scalF$"Synthesis_plot" <-(scalF$"Synthesis"/1000)**(1/2)
+#plot(scalF$"#variables", scalF$"Synthesis_plot", xlab="Number of variables", ylab=expression(paste("Square root of time (", s**(1/2), ")")), cex=0.8, pch=18, xaxt="n")
+#axis(1, at = c(5, 50, 100, 200, 500, 1000, 2000), las=2)
+#meanScalF <- aggregate(scalF$"Synthesis_plot", by=list(scalF$"#variables"), FUN=mean)
+#points(meanScalF$"Group.1", meanScalF$"x", pch=21, col="red", bg="red")
 
 #points(scalF$"#variables", ((scalF$"Complex constraints"/1000)**(1/2)), cex=0.8, pch=18, col="blue", bg="blue")
 
-scalF.lm <- lm(scalF$"Synthesis_plot" ~ scalF$"#variables")
-scalF.r.squared <- summary(scalF.lm)$r.squared
-print(scalF.r.squared)
-abline(scalF.lm)
-print(cor(scalF$"Synthesis_plot", scalF$"#variables"))
+#scalF.lm <- lm(scalF$"Synthesis_plot" ~ scalF$"#variables")
+#scalF.r.squared <- summary(scalF.lm)$r.squared
+#print(scalF.r.squared)
+#abline(scalF.lm)
+#print(cor(scalF$"Synthesis_plot", scalF$"#variables"))
 
 # Scalability over configurations
 print("Scalability w.r.t configurations")
