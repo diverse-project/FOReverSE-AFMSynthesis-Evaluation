@@ -29,18 +29,21 @@ cd $TMP_DIR
 
 for filename in $TMP_DIR/dataset/*
 do
-	echo $filename
-	basefilename=$(basename "$filename")
-	#extension="${basefilename##*.}"
-	outdir="${basefilename%.*}"
+	for i in {1..100}
+	do
+		echo $filename
+		basefilename=$(basename "$filename")
+		#extension="${basefilename##*.}"
+		outdir="${basefilename%.*}_$i"
 
-	./simple_synthesis.sh "$filename" "$TMP_DIR/results/$outdir" $@
+		./simple_synthesis.sh "$filename" "$TMP_DIR/results/$outdir" $@
 
-	# Save results
-	rm -f $TMP_DIR/results/*/sicstus_output.txt
-	rm -f $TMP_DIR/results/*/converted_matrix.csv
-	cp -r $TMP_DIR/results/* $RESULTS_DIR
-	rm -rf $TMP_DIR/results/*
+		# Save results
+		rm -f $TMP_DIR/results/*/sicstus_output.txt
+		rm -f $TMP_DIR/results/*/converted_matrix.csv
+		cp -r $TMP_DIR/results/* $RESULTS_DIR
+		rm -rf $TMP_DIR/results/*
+	done
 
 done
 
