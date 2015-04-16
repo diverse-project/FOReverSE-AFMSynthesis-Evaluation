@@ -29,14 +29,14 @@ cd $TMP_DIR
 
 for filename in $TMP_DIR/dataset/*
 do
-	for i in {1..100}
+	for i in {$(( $1 * 10 ))..$(( (($1 + 1) * 10) - 1 ))}
 	do
 		echo $filename
 		basefilename=$(basename "$filename")
 		#extension="${basefilename##*.}"
 		outdir="${basefilename%.*}_$i"
 
-		./simple_synthesis.sh "$filename" "$TMP_DIR/results/$outdir" $@
+		./simple_synthesis.sh "$filename" "$TMP_DIR/results/$outdir" ${@:2}
 
 		# Save results
 		rm -f $TMP_DIR/results/*/sicstus_output.txt
