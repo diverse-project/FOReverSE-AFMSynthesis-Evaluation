@@ -29,7 +29,9 @@ cd $TMP_DIR
 
 for filename in $TMP_DIR/dataset/*
 do
-	for i in {$(( $1 * 10 ))..$(( (($1 + 1) * 10) - 1 ))}
+	start=$(( $1 * 10 ))
+	end=$(( ($1 + 1) * 10 ))
+	for (( i=$start; i<$end; i++ ))
 	do
 		echo $filename
 		basefilename=$(basename "$filename")
